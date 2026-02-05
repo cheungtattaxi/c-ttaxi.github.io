@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>長達的士管理及投資有限公司 | 誠聘的士司機</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 頁首樣式 - 綠色主題 */
+        header {
+            background: linear-gradient(135deg, #1a8c1a 0%, #2db92d 100%);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-bottom: 8px solid #f5f5f5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .company-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* 自定義公司標誌樣式 */
+        .custom-logo {
+            height: 80px;
+            width: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .company-name {
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0.5rem;
+        }
+        
+        .company-slogan {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #e8f5e8;
+        }
+        
+        /* 車輛圖片展示 */
+        .vehicle-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .vehicle-image-container {
+            text-align: center;
+        }
+        
+        .vehicle-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .vehicle-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .vehicle-label {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: #1a8c1a;
+        }
+        
+        /* 主要內容區域 */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+            gap: 2.5rem;
+        }
+        
+        .info-section {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .contact-section {
+            flex: 2;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid #1a8c1a;
+            border: 1px solid #e8f5e8;
+        }
+        
+        .section-title {
+            color: #1a8c1a;
+            border-bottom: 3px solid #e8f5e8;
+            padding-bottom: 12px;
+            margin-bottom: 1.8rem;
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+        
+        /* 車輛選擇部分 */
+        .vehicle-options {
+            background: #f9fff9;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin: 2rem 0;
+            border-left: 5px solid #1a8c1a;
+            border: 1px solid #e8f5e8;
+        }
+        
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .vehicle-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid #2db92d;
+            transition: all 0.3s ease;
+        }
+        
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .vehicle-icon {
+            font-size: 2.5rem;
+            color: #1a8c1a;
+            margin-bottom: 1rem;
+        }
+        
+        .vehicle-name {
+            font-size: 1.3rem;
+            color: #1a8c1a;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* 司機福利部分 */
+        .benefit-section {
+            background: #f9fff9;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin-bottom: 2rem;
+            border-left: 5px solid #2db92d;
+            border: 1px solid #e8f5e8;
+        }
+        
+        .benefit-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .benefit-icon-large {
+            font-size: 4rem;
+            color: #1a8c1a;
+        }
+        
+        .benefit-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* 申請條件部分 */
+        .requirements {
+            background: #f9fff9;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin: 2.5rem 0;
+            border-left: 5px solid #1a8c1a;
+            border: 1px solid #e8f5e8;
+        }
+        
+        .requirements ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+        
+        .requirements li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .requirements li:before {
+            content: "✓";
+            color: #1a8c1a;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* WhatsApp聯絡區域 */
+        .whatsapp-contact {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 2.5rem;
+            background: linear-gradient(to right, #1a8c1a, #2db92d);
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(26, 140, 26, 0.2);
+        }
+        
+        .whatsapp-contact h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .whatsapp-contact p {
+            margin-bottom: 1.8rem;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            color: #1a8c1a;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #f0fff0;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .whatsapp-btn i {
+            font-size: 2.2rem;
+            margin-right: 15px;
+            color: #25D366;
+        }
+        
+        /* 聯絡資訊 */
+        .contact-details {
+            background-color: #f9fff9;
+            padding: 1.8rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border: 1px solid #e8f5e8;
+        }
+        
+        .contact-details h3 {
+            color: #1a8c1a;
+            margin-bottom: 1.2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            color: #1a8c1a;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+        
+        /* 頁尾 */
+        footer {
+            background-color: #1a8c1a;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        .company-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #fff;
+            color: #1a8c1a;
+            transform: translateY(-5px);
+        }
+        
+        /* 綠色主題按鈕 */
+        .green-btn {
+            display: inline-block;
+            background-color: #1a8c1a;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .green-btn:hover {
+            background-color: #2db92d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 140, 26, 0.3);
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .company-name {
+                font-size: 2rem;
+            }
+            
+            .company-slogan {
+                font-size: 1.1rem;
+            }
+            
+            .custom-logo {
+                height: 60px;
+                margin-bottom: 15px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .benefit-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .vehicle-grid, .vehicle-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-contact {
+                padding: 1.8rem;
+            }
+            
+            .whatsapp-btn {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+            
+            .contact-section {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 動畫效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 圖片說明文字 */
+        .image-caption {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        /* 簡單介紹部分 */
+        .simple-intro {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f9fff9;
+            border-radius: 10px;
+            border: 1px solid #e8f5e8;
+        }
+        
+        .simple-intro p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 團隊圖片展示 */
+        .team-image-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .team-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁首區域 -->
+    <header>
+        <div class="container">
+            <div class="company-header">
+                <div class="logo-container">
+                    <!-- 
+                    【圖片位置1：公司標誌】
+                    將下面的 src="images/logo.png" 替換為您的圖片路徑
+                    例如：如果您的圖片名稱為 "company-logo.jpg"，則改為 src="images/company-logo.jpg"
+                    -->
+                    <img src="images/logo.jpeg" alt="長達的士標誌" class="custom-logo">
+                    <h1 class="company-name">長達的士管理及投資有限公司</h1>
+                </div>
+                <p class="company-slogan">專業的士管理服務 | 為司機提供優質工作機會</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 簡單介紹 -->
+    <div class="container">
+        <div class="simple-intro fade-in">
+            <p>長達的士管理及投資有限公司致力於為香港的士司機提供優質的工作機會和完善的管理服務，幫助司機實現穩定收入與工作生活平衡。</p>
+        </div>
+    </div>
+    
+    <!-- 車輛圖片展示區 -->
+    <div class="container">
+        <div class="vehicle-images fade-in">
+            <!-- 
+            【圖片位置2：四座位車輛】
+            將下面的 src="images/4seater.jpg" 替換為您的四座位車輛圖片
+            -->
+            <div class="vehicle-image-container">
+                <img src="images/4seater.jpeg" alt="四座位的士" class="vehicle-img">
+                <div class="vehicle-label">四座位</div>
+            </div>
+            
+            <!-- 
+            【圖片位置3：小露寶車輛】
+            將下面的 src="images/small-robo.jpg" 替換為您的小露寶車輛圖片
+            -->
+            <div class="vehicle-image-container">
+                <img src="images/811.jpeg" alt="小露寶的士" class="vehicle-img">
+                <div class="vehicle-label">小露寶</div>
+            </div>
+            
+            <!-- 
+            【圖片位置4：大露寶車輛】
+            將下面的 src="images/big-robo.jpg" 替換為您的大露寶車輛圖片
+            -->
+            <div class="vehicle-image-container">
+                <img src="images/bigrobo.jpeg" alt="大露寶的士" class="vehicle-img">
+                <div class="vehicle-label">大露寶</div>
+            </div>
+            
+            <!-- 
+            【圖片位置5：MIFA 7車輛】
+            將下面的 src="images/4247.jpeg" 替換為您的MIFA 7車輛圖片
+            -->
+            <div class="vehicle-image-container">
+                <img src="images/zy4247.jpeg" alt="MIFA 7的士" class="vehicle-img">
+                <div class="vehicle-label">MIFA 7</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主要內容 -->
+    <div class="container">
+        <div class="main-content">
+            <!-- 左側資訊區域 -->
+            <div class="info-section">
+                <!-- 車輛選擇部分 -->
+                <div class="vehicle-options fade-in">
+                    <h2 class="section-title"><i class="fas fa-taxi"></i> 四款車輛可供選擇</h2>
+                    <p>我們提供多種車型選擇，滿足不同司機的需求和偏好：</p>
+                    
+                    <div class="vehicle-grid">
+                        <div class="vehicle-card">
+                            <div class="vehicle-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h3 class="vehicle-name">四座位</h3>
+                            <p>標準四座位的士，</p>
+                        </div>
+                        
+                        <div class="vehicle-card">
+                            <div class="vehicle-icon">
+                                <i class="fas fa-car-side"></i>
+                            </div>
+                            <h3 class="vehicle-name">小露寶</h3>
+                            <p>混能首選，經濟實惠</p>
+                        </div>
+                        
+                        <div class="vehicle-card">
+                            <div class="vehicle-icon">
+                                <i class="fas fa-shuttle-van"></i>
+                            </div>
+                            <h3 class="vehicle-name">大露寶</h3>
+                            <p>最新款混能車，續航可達450公里</p>
+                        </div>
+                        
+                        <div class="vehicle-card">
+                            <div class="vehicle-icon">
+                                <i class="fas fa-car-alt"></i>
+                            </div>
+                            <h3 class="vehicle-name">MIFA 7</h3>
+                            <p>政府的士車隊:各大口岸機場專用車隊位、車隊價充電，低至$0.4/公里</p>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 1.5rem; text-align: center; font-weight: 500; color: #1a8c1a;">
+                        所有車輛均定期保養，確保性能良好，為司機提供安全可靠的營運工具。
+                    </p>
+                </div>
+                
+                <!-- 司機團隊圖片展示（可選） -->
+                <!-- 
+                【圖片位置6：司機團隊圖片】
+                如果您有司機團隊的圖片，可以取消註釋下面的代碼
+                將 src="images/team.jpg" 替換為您的團隊圖片
+                -->
+                <!--
+                <div class="team-image-section fade-in">
+                    <h2 class="section-title"><i class="fas fa-users"></i> 我們的司機團隊</h2>
+                    <img src="images/team.jpg" alt="長達的士司機團隊" class="team-image">
+                    <p class="image-caption">長達的士專業司機團隊</p>
+                </div>
+                -->
+                
+                <!-- 司機福利部分 -->
+                <div class="benefit-section fade-in">
+                    <h2 class="section-title"><i class="fas fa-gift"></i> 司機福利待遇</h2>
+                    
+                    <div class="benefit-content">
+                        <div class="benefit-icon-large">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h3 style="color: #1a8c1a; margin-bottom: 1rem; font-size: 1.5rem;">彈性工作時間</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">
+                                我們提供極具彈性的工作時間安排，司機可根據個人生活節奏自由選擇工作時段。<br><br>
+                                <strong>全職選擇：</strong>適合希望獲得穩定收入的司機，可選擇固定或輪班制。<br>
+                                <strong>兼職選擇：</strong>適合需要兼顧家庭或其他工作的司機，可選擇週末或特定時段工作。<br>
+                                <strong>替更選擇：</strong>提供臨時或短期工作機會，時間安排靈活自由。<br><br>
+                                無論您需要何種工作模式，我們都能為您提供合適的選擇，幫助您實現工作與生活的平衡。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 申請條件部分 -->
+                <div class="requirements fade-in">
+                    <h2 class="section-title"><i class="fas fa-clipboard-check"></i> 申請條件</h2>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">我們尋求符合以下基本條件的的士司機加入我們的團隊：</p>
+                    <ul>
+                        <li>需持有有效香港的士駕駛執照</li>
+                        <li>性格親和有禮，注重乘客服務體驗</li>
+                    </ul>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1.2rem; background-color: #e8f5e8; border-radius: 8px;">
+                        <p style="color: #1a8c1a; font-weight: 500;">
+                            <i class="fas fa-info-circle"></i> 我們重視司機的服務態度和專業精神，相信優質的服務是成功的士業務的關鍵。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右側聯絡區域 -->
+            <div class="contact-section fade-in">
+                <h2 class="section-title"><i class="fas fa-phone-alt"></i> 立即申請加入</h2>
+                <p>如果您符合以上條件並有意加入長達的士團隊，請通過以下方式與我們聯繫：</p>
+                
+                <div class="whatsapp-contact">
+                    <h3><i class="fab fa-whatsapp"></i> WhatsApp直接聯絡</h3>
+                    <p>點擊下方按鈕，直接與招聘經理對話，快速完成申請程序</p>
+                    
+                    <!-- WhatsApp連結 - 已使用您提供的號碼 -->
+                    <a href="https://wa.me/85263873793?text=你好，我對長達的士管理及投資有限公司的司機職位有興趣，想了解更多詳情。" 
+                       target="_blank" 
+                       class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                         立即WhatsApp聯絡
+                    </a>
+                    
+                    <p style="margin-top: 1.5rem; font-size: 0.95rem; opacity: 0.9;">請在訊息中注明「的士司機申請」以便優先處理</p>
+                </div>
+                
+                <div class="contact-details">
+                    <h3><i class="fas fa-info-circle"></i> 其他聯絡方式</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>招聘熱線：<strong>+852 6387 3793</strong></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>公司地址：新界粉嶺聯和墟和泰街17號地鋪</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>辦公時間：星期一至五 9:00-18:00，星期六 9:00-13:00</span>
+                    </div>
+                </div>
+                
+                <!-- 公司辦公室圖片（可選） -->
+                <!-- 
+                【圖片位置7：公司辦公室圖片】
+                如果您有公司辦公室的圖片，可以取消註釋下面的代碼
+                將 src="images/office.jpg" 替換為您的辦公室圖片
+                -->
+                <!--
+                <div style="margin-top: 2rem; text-align: center;">
+                    <h4 style="color: #1a8c1a; margin-bottom: 1rem;">我們的辦公室</h4>
+                    <img src="images/office.jpg" alt="長達的士辦公室" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+                    <p class="image-caption">長達的士公司辦公室</p>
+                </div>
+                -->
+                
+                <!-- 簡單聯絡指引 -->
+                <div style="margin-top: 2.5rem; padding: 1.5rem; background-color: #f0fff0; border-radius: 10px;">
+                    <h4 style="color: #1a8c1a; margin-bottom: 1rem;">申請指引</h4>
+                    <p style="font-size: 0.95rem; color: #555;">
+                        1. 通過WhatsApp或電話聯絡我們<br>
+                        2. 提供基本資料及駕駛執照資訊<br>
+                        3. 安排簡單會面了解詳情<br>
+                        4. 選擇合適車輛及工作安排<br>
+                        5. 開始合作
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 頁尾 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- 
+                【圖片位置8：頁尾小標誌】
+                如果您有較小尺寸的公司標誌，可以取消註釋下面的代碼
+                將 src="images/logo-small.png" 替換為您的小標誌圖片
+                -->
+                <!--
+                <img src="images/logo-small.png" alt="長達的士標誌" style="height: 60px; margin-bottom: 1rem;">
+                -->
+                
+                <div class="footer-logo">
+                    <i class="fas fa-taxi"></i>
+                </div>
+                
+                <div class="company-info">
+                    <h3>長達的士管理及投資有限公司</h3>
+                    <p>Cheung Tat Taxi Management & Investment Limited</p>
+                    <p style="margin-top: 1rem; opacity: 0.9;">© 2023 版權所有 | 專業的士管理服務</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/85263873793" target="_blank" class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+85263873793" class="social-icon">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+                
+                <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8; max-width: 600px;">
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // WhatsApp連結點擊追蹤
+        document.querySelector('.whatsapp-btn').addEventListener('click', function() {
+            console.log('WhatsApp聯絡按鈕被點擊 - 長達的士招聘');
+        });
+        
+        // 滾動動畫效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                    }
+                });
+            };
+            
+            // 初始化所有淡入元素為透明
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            });
+            
+            // 首次檢查
+            fadeInOnScroll();
+            
+            // 滾動時檢查
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // 圖片加載失敗處理
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    console.log('圖片加載失敗: ' + this.src);
+                    // 顯示替代文本
+                    const parent = this.parentElement;
+                    if (parent && parent.querySelector('.vehicle-label')) {
+                        const label = parent.querySelector('.vehicle-label');
+                        this.style.display = 'none';
+                        parent.style.padding = '20px';
+                        parent.style.backgroundColor = '#f9fff9';
+                        parent.innerHTML = '<div style="font-size: 3rem; color: #ccc; margin-bottom: 10px;"><i class="fas fa-car"></i></div>' + 
+                                          '<div style="color: #1a8c1a; font-weight: bold;">' + label.textContent + '</div>' +
+                                          '<div style="color: #666; font-size: 0.9rem; margin-top: 5px;">圖片暫缺</div>';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
